@@ -1,7 +1,5 @@
 {
-  "windsurf.contextPaths": [
-    ".windsurf/rules/harness-se-rules.md",
-    ".windsurf/prompts"
-  ],
-  "editor.formatOnSave": true
+    "codeium.enableConfig": {
+        "*": true
+    }
 }

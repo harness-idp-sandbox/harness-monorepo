@@ -18,6 +18,24 @@ Bootstrap includes:
 
 Once the bootstrap is complete, **all new apps/services are added through the IDP Provisioning pipeline**—not by manually copying files.
 
+## Using this repo for new POVs (e.g., CUSTOMER_NAME-monorepo)
+
+To reuse this monorepo structure for customer POVs, follow these steps:
+
+1. Fork this repository into the `harness-idp-sandbox` organization with name `<customer-name>-monorepo`
+
+2. Update the following configuration files:
+   - `infra/bootstrap/modules/iac-state/terraform.tfvars`: 
+     Change `state_key_prefix` to `"repos/harness-idp-sandbox/<customer-name>-monorepo"`
+   - `infra/bootstrap/terraform.tfvars`: 
+     Update `github_repo` value to `"<customer-name>-monorepo"` if it exists
+
+3. Update Harness pipeline configurations in `harness-idp-sandbox/<customer-name>-admin-repo/iac-pipelines` repo/directory:
+   - Replace any references to `harness-monorepo` with `<customer-name>-monorepo`
+   - Update pipeline inputs with your specific project details
+
+If you'd prefer, you can run the setup-fork.sh script to perform these steps automatically. You will need to pass `CUSTOMER_NAME` to the script, e.g., `./setup-fork.sh acme`.
+
 ---
 
 ## Repository Layout
